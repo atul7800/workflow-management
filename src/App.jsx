@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ProvideContext } from '../src/context/Context';
-import { LoginForm } from './components/LoginForm';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ProvideContext } from "../src/context/Context";
+import { LoginForm } from "./components/LoginForm";
 // import PrivateRoute from './components/auth/PrivateRoute';
 // import LoginPage from './pages/LoginPage';
-import WorkflowList from './components/WorkflowList';
-import WorkflowEditor from './components/WorkflowEditor';
+import WorkflowList from "./components/WorkflowList";
+import CreateNewWorkflow from "./components/CreateNewWorkflow";
 // import NotFoundPage from './pages/NotFoundPage';
 // import './styles/main.css';
 
@@ -14,19 +14,10 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LoginForm />} />
-          
-          <Route path="/workflows" element={
-            <WorkflowList />
-          } />
-          
-          <Route path="/workflows/:id" element={
-            <WorkflowEditor />
-          } />
-          
-          <Route path="/" element={
-            <WorkflowList />
-          } />
-          
+
+          <Route path="/workflows" element={<WorkflowList />} />
+
+          <Route path="/createWorkflow" element={<CreateNewWorkflow />} />
         </Routes>
       </Router>
     </ProvideContext>

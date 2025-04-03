@@ -1,0 +1,143 @@
+/* Container */
+.flowchart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fcf5e9; /* Light beige background */
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Wrapper for each node (Start, Input, End) */
+.node-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Base style for all nodes */
+
+.startNodeContainer,
+.endNodeContainer {
+  width: 85px;
+  height: 85px;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 2px;
+  border: 6px solid #6b8e23;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.endNodeContainer {
+  border: 6px solid #dc143c;
+  margin-top: 5px;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Start Node */
+.start {
+  width: 80px;
+  height: 80px;
+  background-color: #6b8e23; /* Green */
+  border-radius: 50%;
+}
+
+/* End Node */
+.end {
+  width: 80px;
+  height: 80px;
+  background-color: #dc143c; /* Red */
+  border-radius: 50%;
+}
+
+/* Input Node */
+.input-box {
+  width: 300px;
+  min-height: 64px;
+  background-color: white;
+  border: 2px solid #6b8e23;
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Input Field */
+.input-box textarea {
+  width: 100%;
+  min-height: 30px;
+  max-height: 200px;
+  padding: 0 5px 0 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  resize: none; /* Prevent manual resizing */
+  overflow: auto; /* Hide scrollbar while expanding */
+}
+
+/* Vertical Arrow Line */
+.arrow {
+  width: 2px;
+  height: 30px;
+  background-color: gray;
+  position: relative;
+}
+
+/* Arrowhead */
+.arrow::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: -4px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid gray;
+}
+
+/* Plus Button */
+.plus-button {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4f4f4f;
+}
+
+.plus-button:hover {
+  background: #f0f0f0;
+}
+
+/* Delete Button */
+.delete-button {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
+}
