@@ -1,0 +1,131 @@
+.mainContainer{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container{
+    flex: 1;
+}
+
+.menuIcon{
+    width: 40px;
+    height: 40px;
+}
+
+.title{
+    margin: 0;
+}
+
+.searchAndCreate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.listContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.searchBarContainer{
+    display: flex;
+    align-items: center;
+    border: 2px solid #CACACA;
+    padding: 7px 12px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 340px;
+    
+}
+
+.searchInput{
+    flex: 1;
+    /* padding: 5px 10px 4px 10px; */
+    border: none;
+    outline: none;
+}
+
+.searchButton{
+    border: none;
+    /* padding: 5px 10px 2px 10px; */
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.searchIcon{
+    font-size: 20px;
+    color: #838383;
+}
+
+.createBtn{
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    border-radius: 6px;
+}
+
+.plus{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.workFlowsTable{
+    margin-top: 40px;
+    width: 95%;
+}
+
+table{
+    border-collapse: collapse;
+    border: none;
+}
+
+th{
+    border: none;
+    padding-bottom: 10px;
+}
+
+td{
+    border-right: none;
+    border-left: none;
+    border-top: 1px solid #ddd;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+tr:first-child td{
+    border-top: 2px solid #F68B21;
+}
+
+tr:last-child td {
+    border-bottom: none;
+  }
+
+.cellPadding{
+    padding: 15px 35px;
+}
+
+.btnsCellPadding{
+    padding: 15px 10px;
+}
+
+.buttons{
+    padding: 7px 12px;
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.descriptionCol{
+    max-width: 300px
+}
