@@ -4,7 +4,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import styles from "./styles/CreateNewWorkflow.module.css";
 import { Context } from "../context/Context";
 import { useNavigate } from "react-router-dom";
-import Flowchart from "./shared/FlowChart";
+import Flowchart from "./shared/Flowchart";
 import SavePopup from "./shared/SavePopup";
 
 export default function CreateNewWorkflow() {
