@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./SavePopup.css";
 import { Context } from "../../context/Context";
 import { IoMdClose } from "react-icons/io";
@@ -6,11 +6,12 @@ import { IoMdClose } from "react-icons/io";
 export default function SavePopup({ isPopupOpen, handlePopup }) {
   if (!isPopupOpen) return null;
 
-  const { workFlowNames, setWorkFlowNames } = useState(Context);
+  const { workFlowNames, updateWorkFlowNames } = useContext(Context);
+  const { workFlowList, updateWorkFlowList } = useContext(Context);
 
   const [workflowDetail, setWorkflowDetail] = useState({
-    name: "",
-    description: "",
+    title: "",
+    body: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -22,15 +23,36 @@ export default function SavePopup({ isPopupOpen, handlePopup }) {
   const handleSave = () => {
     if (!validate()) return;
 
-    setWorkFlowNames([...workFlowNames, workflowDetail]);
-    setErrors({ name: "" });
+    const raw = new Date().toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "Asia/Kolkata",
+    });
+
+    const [date, time] = raw.split(", ");
+    const timestamp = `${time} IST - ${date}`;
+
+    const newId = `#${(workFlowList.length + 1).toString().padStart(3, "0")}`;
+
+    const newWorkflow = {
+      id: newId,
+      title: workflowDetail.title,
+      body: workflowDetail.body,
+      lastEdited: timestamp,
+    };
+
+    updateWorkFlowList([...workFlowList, newWorkflow]);
+    setErrors({ title: "" });
     handlePopup(false);
   };
 
   const validate = () => {
     let newErrors = {};
-    if (!workflowDetail.name.trim()) {
-      newErrors.name = "Name is required";
+    if (!workflowDetail.title.trim()) {
+      newErrors.title = "Name is required";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -53,20 +75,20 @@ export default function SavePopup({ isPopupOpen, handlePopup }) {
                 <label>Name</label>
                 <input
                   type="text"
-                  name="name"
-                  value={workflowDetail.name}
+                  name="title"
+                  value={workflowDetail.title}
                   onChange={handleInputChange}
                   className="input-field name-input"
                   placeholder="Name here"
                 />
-                {errors.name && <span className="error">{errors.name}</span>}
+                {errors.title && <span className="error">{errors.title}</span>}
               </div>
 
               <div className="labelAndInput">
                 <label>Description</label>
                 <textarea
-                  name="description"
-                  value={workflowDetail.description}
+                  name="body"
+                  value={workflowDetail.body}
                   onChange={handleInputChange}
                   className="input-field desc-input"
                   placeholder="Write here.."

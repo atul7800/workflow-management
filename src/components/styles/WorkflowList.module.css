@@ -85,7 +85,8 @@ table {
 
 th {
   border: none;
-  padding-bottom: 10px;
+  padding: 0 35px 10px 35px;
+  text-align: left;
 }
 
 td {
@@ -310,5 +311,23 @@ tr:last-child td {
 
 .externalLink {
   color: #4a4a4a;
+  cursor: pointer;
+}
+
+.titleAndLogout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titleAndLogout button {
+  background-color: #ee3425;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
   cursor: pointer;
 }

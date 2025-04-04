@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import "./styles/LoginForm.css";
 import logo_highbridge from "../assets/logo_highbridge.png";
-import fb from "../assets/fb.png";
-import google from "../assets/google.png";
-import apple from "../assets/apple.png";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
 
-export function LoginForm() {
+export function SignupForm() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const isValidEmail = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
+  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -31,7 +27,7 @@ export function LoginForm() {
     return () => unsubscribe();
   }, []);
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     if (!isValidEmail(email)) {
@@ -39,23 +35,30 @@ export function LoginForm() {
       return;
     }
 
-    if (!password.trim()) {
-      alert("Password cannot be empty");
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
       return;
     }
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
       const user = userCredential.user;
+
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("userEmail", user.email);
-      navigate("workflows");
+
+      navigate("/workflows");
     } catch (error) {
-      alert("Login failed: " + error.message);
+      alert("Signup failed: " + error.message);
     }
   };
 
@@ -67,19 +70,19 @@ export function LoginForm() {
             <img src={logo_highbridge} alt="logo_highbridge" />
           </div>
           <div className="vision">
-            <h2>Building the Future...</h2>
+            <h2>Join Us Today</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Be part of something amazing. Create your account and explore
+              workflows.
             </p>
           </div>
         </div>
       </div>
       <div className="login-right">
         <div className="login-form">
-          <h5>WELCOME BACK!</h5>
-          <h2>Log In to your Account</h2>
-          <form onSubmit={handleLogin}>
+          <h5>WELCOME!</h5>
+          <h2>Create a New Account</h2>
+          <form onSubmit={handleSignup}>
             <label>Email</label>
             <input
               type="email"
@@ -96,48 +99,28 @@ export function LoginForm() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <div className="remember-me">
-              <span>
-                <input type="checkbox" id="remember" />
-                <label htmlFor="remember">Remember me</label>
-              </span>
-
-              <a href="#">Forgot Password?</a>
-            </div>
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              placeholder="Re-type password..."
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
             <button type="submit" className="login-button">
-              Log In
+              Sign Up
             </button>
           </form>
-          <div className="social-login">
-            <button className="google socialBtn">
-              <span>
-                <img src={google} alt="Google login" />
-                <span>Log In with Google</span>
-              </span>
-            </button>
-            <button className="facebook socialBtn">
-              <span>
-                <img src={fb} alt="FB login" />
-                <span>Log In with Facebook</span>
-              </span>
-            </button>
-            <button className="apple socialBtn">
-              <span>
-                <img src={apple} alt="Apple login" />
-                <span>Log In with Apple</span>
-              </span>
-            </button>
-          </div>
           <p className="signup-text">
-            New User?{" "}
+            Already have an account?{" "}
             <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                navigate("signup");
+                navigate("/");
               }}
             >
-              SIGN UP HERE
+              LOG IN
             </a>
           </p>
         </div>

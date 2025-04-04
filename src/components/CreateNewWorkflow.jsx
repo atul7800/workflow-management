@@ -8,7 +8,7 @@ import Flowchart from "./shared/FlowChart";
 import SavePopup from "./shared/SavePopup";
 
 export default function CreateNewWorkflow() {
-  const { fileName, setFileName } = useContext(Context);
+  const { fileName, updateFileName } = useContext(Context);
   const navigate = useNavigate();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 

@@ -11,9 +11,18 @@ import { IoMdClose } from "react-icons/io";
 import { FiExternalLink } from "react-icons/fi";
 import { HiDotsVertical } from "react-icons/hi";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function WorkflowList() {
-  const { workFlowList, setWorkFlowList } = useContext(Context);
+  const {
+    workFlowList,
+    updateWorkFlowList,
+    setUser,
+    setFileName,
+    setWorkFlowList,
+    setWorkFlowNames,
+  } = useContext(Context);
   const navigate = useNavigate();
   const [isExPopupOpen, setIsExPopupOpen] = useState(false);
   const [selectedWorkflowId, setSelectedWorkflowId] = useState();
@@ -23,7 +32,7 @@ export default function WorkflowList() {
   useEffect(() => {
     (async () => {
       const workFlows = await fetchWorkFlows();
-      setWorkFlowList(workFlows);
+      //setWorkFlowList(workFlows);
     })();
   }, []);
 
@@ -47,7 +56,7 @@ export default function WorkflowList() {
       })
       .replace(",", " IST");
     if (selectedWorkflowId) {
-      setWorkFlowList((prevList) => {
+      updateWorkFlowList((prevList) => {
         return prevList.map((workflow) =>
           workflow.id === selectedWorkflowId
             ? {
@@ -82,6 +91,22 @@ export default function WorkflowList() {
     return name.includes(query) || id.includes(query);
   });
 
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        setWorkFlowList([]);
+        setFileName("");
+        setWorkFlowNames([]);
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userEmail");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Logout failed", error);
+      });
+  };
+
   return (
     <>
       <div className={styles.mainContainer}>
@@ -90,7 +115,10 @@ export default function WorkflowList() {
         </div>
         <div className={styles.container}>
           <div className={styles.titleSearchAndCreate}>
-            <h2 className={styles.title}>Workflow Builder</h2>
+            <div className={styles.titleAndLogout}>
+              <h2 className={styles.title}>Workflow Builder</h2>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
             <div className={styles.searchAndCreate}>
               <div className={styles.searchBarContainer}>
                 <input
@@ -149,7 +177,7 @@ export default function WorkflowList() {
                             styles.removeBottomBorder
                           }`}
                         >
-                          #{workflow.id}
+                          {workflow.id}
                         </td>
                         <td
                           className={`${styles.cellPadding} ${
@@ -158,7 +186,7 @@ export default function WorkflowList() {
                             styles.removeBottomBorder
                           }`}
                         >
-                          03/04/25
+                          {workflow.lastEdited}
                         </td>
                         <td
                           className={`${styles.descriptionCol} ${
