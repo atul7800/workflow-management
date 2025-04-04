@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./SavePopup.css";
 import { Context } from "../../context/Context";
+import { IoMdClose } from "react-icons/io";
 
 export default function SavePopup({ isPopupOpen, handlePopup }) {
   if (!isPopupOpen) return null;
@@ -39,39 +40,44 @@ export default function SavePopup({ isPopupOpen, handlePopup }) {
     <>
       <div className="popup-overlay">
         <div className="popup">
-          <h3>Save your workflow</h3>
-          <div className="popup-content">
-            <div className="labelAndInput">
-              <label>Name</label>
-              <input
-                type="text"
-                name="name"
-                value={workflowDetail.name}
-                onChange={handleInputChange}
-                className="input-field"
-                placeholder="Name here"
-              />
-              {errors.name && <span className="error">{errors.name}</span>}
+          <div className="form">
+            <div className="popup-title">
+              <h3>Save your workflow</h3>
+              <button className="close-btn" onClick={() => handlePopup(false)}>
+                <IoMdClose />
+              </button>
             </div>
 
-            <div className="labelAndInput">
-              <label>Description</label>
-              <textarea
-                name="description"
-                value={workflowDetail.description}
-                onChange={handleInputChange}
-                className="input-field"
-                placeholder="Write here.."
-              ></textarea>
+            <div className="popup-content">
+              <div className="labelAndInput">
+                <label>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={workflowDetail.name}
+                  onChange={handleInputChange}
+                  className="input-field name-input"
+                  placeholder="Name here"
+                />
+                {errors.name && <span className="error">{errors.name}</span>}
+              </div>
+
+              <div className="labelAndInput">
+                <label>Description</label>
+                <textarea
+                  name="description"
+                  value={workflowDetail.description}
+                  onChange={handleInputChange}
+                  className="input-field desc-input"
+                  placeholder="Write here.."
+                ></textarea>
+              </div>
             </div>
           </div>
 
           <div className="popup-actions">
             <button className="submit-btn" onClick={handleSave}>
               Save
-            </button>
-            <button className="close-btn" onClick={() => handlePopup(false)}>
-              Close
             </button>
           </div>
         </div>

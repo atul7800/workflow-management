@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dim background */
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,13 +12,18 @@
 
 .popup {
   background: white;
-  padding: 35px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
   width: 600px;
   height: 450px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form {
+  padding: 20px 30px;
 }
 
 .popup-content {
@@ -43,6 +48,14 @@
   resize: none;
 }
 
+.name-input {
+  max-width: 300px;
+}
+
+.desc-input {
+  max-width: 500px;
+}
+
 textarea {
   resize: vertical; /* Allow resizing */
   min-height: 60px;
@@ -51,24 +64,28 @@ textarea {
 .popup-actions {
   margin-top: 15px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 0 0 8px 8px;
 }
 
-.submit-btn,
-.close-btn {
+.submit-btn {
   padding: 8px 15px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.submit-btn {
-  background-color: green;
-  color: white;
+.close-btn {
+  font-size: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.close-btn {
-  background-color: red;
+.submit-btn {
+  background-color: #ee3425;
   color: white;
 }
 
@@ -79,4 +96,15 @@ label {
 h3 {
   text-align: left;
   margin-top: 0;
+}
+
+.popup-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
 }

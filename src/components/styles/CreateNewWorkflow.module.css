@@ -30,6 +30,10 @@
   align-items: center;
 }
 
+.saveBtn {
+  cursor: pointer;
+}
+
 .fileName {
   border: none;
   outline: none;

@@ -1,0 +1,205 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: url("../../assets//bgImg.png") no-repeat center center/cover;
+}
+
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+  z-index: 1;
+}
+
+.login-left {
+  width: 50%;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vision-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.login-right {
+  width: 50%;
+  padding: 40px 40px 0 40px;
+  text-align: center;
+  display: flex;
+}
+
+.login-left,
+.login-right {
+  position: relative;
+  z-index: 2;
+}
+
+.login-form {
+  width: 460px;
+  background-color: white;
+  border-radius: 24px 24px 0 0;
+  padding: 30px;
+}
+
+.login-form h2,
+h5 {
+  text-align: left;
+}
+
+.login-form h2 {
+  margin-bottom: 15px;
+  margin-top: 2px;
+}
+
+.login-form h5 {
+  margin-bottom: 15px;
+}
+
+.login-form h5 {
+  margin: 0;
+}
+
+.login-form h5 {
+  margin-top: 2px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+  margin: 10px 0 5px;
+}
+
+input {
+  padding: 10px;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.remember-me {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 10px 0;
+}
+
+.remember-me span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.remember-me span input {
+  width: 22px;
+  height: 22px;
+}
+
+.remember-me span label {
+  margin: 0;
+}
+
+.remember-me a {
+  text-decoration: none;
+  color: black;
+}
+
+.login-button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  height: 55px;
+  font-weight: 600;
+}
+
+.social-login button {
+  width: 100%;
+  height: 48px;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: 2px solid #eeeeee;
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialBtn img {
+  width: 18px;
+  height: 18px;
+}
+
+.socialBtn span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.google {
+}
+
+.facebook {
+}
+
+.apple {
+}
+
+.signup-text {
+  margin-top: 20px;
+}
+
+.signup-text a {
+  font-weight: bold;
+  color: black;
+}
+
+.vision {
+  width: 380px;
+  text-align: left;
+}
