@@ -6,7 +6,6 @@ import { IoMdClose } from "react-icons/io";
 export default function SavePopup({ isPopupOpen, handlePopup }) {
   if (!isPopupOpen) return null;
 
-  const { workFlowNames, updateWorkFlowNames } = useContext(Context);
   const { workFlowList, updateWorkFlowList } = useContext(Context);
 
   const [workflowDetail, setWorkflowDetail] = useState({

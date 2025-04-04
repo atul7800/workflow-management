@@ -15,18 +15,6 @@ export function SignupForm() {
 
   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        // User is not logged in, safe to clear localStorage
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("userEmail");
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   const handleSignup = async (e) => {
     e.preventDefault();
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
-import { fetchWorkFlows, executeWorkflow } from "../workFlow/useWorkFlow";
+import { executeWorkflow } from "../workFlow/useWorkFlow";
 import styles from "./styles/WorkflowList.module.css";
 import menu from "../assets/menu.png";
 import pinned from "../assets/pinned.png";
@@ -28,13 +28,6 @@ export default function WorkflowList() {
   const [selectedWorkflowId, setSelectedWorkflowId] = useState();
   const [expandedRowId, setExpandedRowId] = useState();
   const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    (async () => {
-      const workFlows = await fetchWorkFlows();
-      //setWorkFlowList(workFlows);
-    })();
-  }, []);
 
   const toggleExpand = (workflowID) => {
     setExpandedRowId((prevState) =>

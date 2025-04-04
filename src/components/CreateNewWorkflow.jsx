@@ -12,10 +12,6 @@ export default function CreateNewWorkflow() {
   const navigate = useNavigate();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const saveWorkflow = () => {
-    setIsPopupOpen(false);
-  };
-
   return (
     <>
       <div className={styles.mainContainer}>
