@@ -136,6 +136,7 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.cellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -144,6 +145,7 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.cellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -152,6 +154,7 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.cellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -162,6 +165,7 @@ export default function WorkflowList() {
                             styles.cellPadding
                           } ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -170,6 +174,7 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.btnsCellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -178,6 +183,7 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.btnsCellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -191,6 +197,7 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.btnsCellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -199,6 +206,7 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.btnsCellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                         >
@@ -207,11 +215,17 @@ export default function WorkflowList() {
                         <td
                           className={`${styles.btnsCellPadding} ${
                             workflow.id === expandedRowId &&
+                            Array.isArray(workflow.executionHistory) &&
                             styles.removeBottomBorder
                           }`}
                           onClick={() => toggleExpand(workflow.id)}
                         >
-                          edit
+                          {expandedRowId === workflow.id &&
+                          Array.isArray(workflow.executionHistory) ? (
+                            <FaArrowUp />
+                          ) : (
+                            <FaArrowDown />
+                          )}
                         </td>
                       </tr>
                       {expandedRowId === workflow.id &&
